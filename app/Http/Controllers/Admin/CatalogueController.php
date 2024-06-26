@@ -19,7 +19,7 @@ class CatalogueController extends Controller
      */
     public function index()
     {
-        $data = Catelogue::query()->latest('id')->paginate(5);
+        $data = Catelogue::query()->latest('id')->get();
         return view(self::PATH_VIEW. __FUNCTION__ , compact('data'));
     }
 
