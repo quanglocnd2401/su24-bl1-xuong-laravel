@@ -32,8 +32,8 @@
                         style="width:100%">
                         <thead>
                             <tr>
-                                
-                                
+
+
                                 <th>ID</th>
                                 <th>Img thumbnail</th>
                                 <th>Name</th>
@@ -47,7 +47,7 @@
                                 <th>Is Good deal</th>
                                 <th>Is New</th>
                                 <th>Is show Home</th>
-
+                                <th>Tags</th>
                                 <th>Created at</th>
                                 <th>Updated at</th>
                                 <th>Action</th>
@@ -57,7 +57,7 @@
 
                             @foreach ($data as $item)
                                 <tr>
-                                    
+
                                     <td> {{ $item->id }}</td>
                                     <td>
                                         @php
@@ -88,12 +88,20 @@
                                     <td>{{ $item->is_show_home }}</td>
                                     <td>
                                         @foreach ($item->tags as $tag)
-                                            <span class="badge bg-infor">{{ $tag->name }}</span>
+                                            <span class="badge bg-primary ">{{ $tag->name }}</span>
                                         @endforeach
                                     </td>
                                     <td>{{ $item->created_at }}</td>
                                     <td>{{ $item->updated_at }}</td>
-                                    <td></td>
+                                    <td>
+
+                                        <form action="{{route('admin.products.destroy', $item)}}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+
+                                            <button onclick="return confirm('Có chắc muốn xóa không')" type="submit" class="btn btn-danger">DELETE</button>
+                                        </form>
+                                    </td>
                                 </tr>
                             @endforeach
 

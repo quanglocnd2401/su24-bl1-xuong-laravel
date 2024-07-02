@@ -11,7 +11,7 @@
     <!-- App favicon -->
     <link rel="shortcut icon" href="{{asset('theme/admin/assets/images/favicon.ico')}}">
     <link href={{asset('https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/.css')}} rel="stylesheet">
-    
+
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
 
     <!-- jsvectormap css -->
@@ -43,7 +43,7 @@
     @include('admin.layout.header')
 
     @include('admin.layout.sidebar')
-    
+
         <!-- Left Sidebar End -->
         <!-- Vertical Overlay-->
         <div class="vertical-overlay"></div>
@@ -54,7 +54,7 @@
         <div class="main-content">
 
             <div class="page-content">
-                <div class="container-fluid">              
+                <div class="container-fluid">
                      @yield('content')
                 </div>
                 <!-- container-fluid -->

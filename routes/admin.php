@@ -24,5 +24,6 @@ Route::prefix('admin')
                 Route::put('{id}/update',           [CatalogueController::class, 'update'])->name('update');
                 Route::get('{id}/destroy',       [CatalogueController::class, 'destroy'])->name('destroy');
             });
+            
          Route::resource('products', ProductController::class);
     });

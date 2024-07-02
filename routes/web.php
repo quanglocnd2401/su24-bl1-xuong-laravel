@@ -1,11 +1,14 @@
 <?php
 
 use App\Http\Controllers\Admin\CatalogueController;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\ProductController;
 // use App\Http\Controllers\CategoryController;
 
 
 
 use App\Models\Catelogue;
+use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -21,7 +24,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $products = Product::query()->latest('id')->limit(5)->get();
+
+    return view('welcome',compact('products'));
 });
 
 
@@ -29,8 +34,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
+Route::get('product/{slug}', [ProductController::class,'detail'])->name('product.detail');
 
+Route::post('cart/add', [CartController::class,'add'])->name('cart.add');
+Route::get('cart/list', [CartController::class,'list'])->name('cart.list');
 
